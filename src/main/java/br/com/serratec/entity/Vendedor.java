@@ -1,5 +1,7 @@
 package br.com.serratec.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -9,6 +11,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_vendedor")
@@ -19,10 +25,15 @@ public class Vendedor {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Schema(description ="Nome do vendedor")
+	@NotBlank(message = "Nome não pode ser vazio")
 	private String nome;
 	@Schema(description ="Email do vendedor")
+	@Email(message =" Email deve ser válido")
+	@NotBlank(message = "Email é obrigatório")
 	private String email;
 	@Schema(description ="Salário do vendedor")
+	@NotNull
+	@Min(value = 1412 , message = "Valor não pode ser inferior ao salário mínimo")
 	private double salario;
 	
 	
@@ -50,6 +61,7 @@ public class Vendedor {
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
+	
 	@OneToMany
 	@Schema(description = "Vendas")
 	private LancamentoVenda venda;

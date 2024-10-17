@@ -26,15 +26,25 @@ public class LancamentoVenda {
 	@Schema(description = "Vendedor da venda")
 	private Vendedor vendedor;
 	
-	public LancamentoVenda(Long id, LocalDate data, Vendedor vendedor) {
-		this.id = id;
-		this.data = data;
-		this.vendedor = vendedor;
-	}
+	@Schema(description = "Valor da venda")
+	private double valor;
 	
 	@PrePersist
 	private void onCreate() {
-		this.data = LocalDate.now();}
+		this.data = LocalDate.now();
+	}
+	
+	
+
+	public LancamentoVenda(Long id, LocalDate data, Vendedor vendedor, double valor) {
+	
+		this.id = id;
+		this.data = data;
+		this.vendedor = vendedor;
+		this.valor = valor;
+	}
+
+
 
 	public Long getId() {
 		return id;
@@ -59,7 +69,13 @@ public class LancamentoVenda {
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
-	
-	
 
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
 }
