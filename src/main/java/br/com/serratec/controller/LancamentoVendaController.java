@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.serratec.entity.LancamentoVenda;
-import br.com.serratec.repository.LancamentoVendaRepository;
+import br.com.serratec.repository.LancamentoRepository;
 import jakarta.validation.Valid;
 
 @RestController
@@ -20,7 +20,7 @@ import jakarta.validation.Valid;
 public class LancamentoVendaController {
 	
 	@Autowired
-	private LancamentoVendaRepository repository;
+	private LancamentoRepository repository;
     
     @PostMapping
 	@ResponseStatus(HttpStatus.CREATED)

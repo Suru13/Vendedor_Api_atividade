@@ -5,23 +5,17 @@ import java.time.LocalDate;
 import br.com.serratec.entity.LancamentoVenda;
 import br.com.serratec.entity.Vendedor;
 
-public class LancamentoVendaResponseDTO {
+public class LancamentoResponseDTO {
 	
 	private LocalDate data;
 	private String nomeVendedor;
 	private double valor;
 	
-
-	
-	
-	
-	
-	
-	public LancamentoVendaResponseDTO(Vendedor vendedor,LancamentoVenda venda) {
+	public LancamentoResponseDTO(LancamentoVenda venda) {
 
 		this.data =venda.getData();
 		this.valor = venda.getValor();
-		this.nomeVendedor = vendedor.getNome();
+		this.nomeVendedor = venda.getVendedor().getNome();
 	}
 	
 	public LocalDate getData() {
