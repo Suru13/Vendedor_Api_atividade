@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.serratec.dto.LancamentoResponseDTO;
@@ -19,8 +18,6 @@ public class LancamentoService {
 	@Autowired
 	private LancamentoRepository repository;
 
-	@Autowired
-	private BCryptPasswordEncoder encoder;
 
 	public List<LancamentoResponseDTO> listar() {
 		List<LancamentoVenda> vendas = repository.findAll();
@@ -44,5 +41,11 @@ public class LancamentoService {
 
 		return new UsuarioRequestDTO(repository.save(usuario));
 	}*/
+	
+	  public LancamentoResponseDTO inserirLancamento(LancamentoVenda venda) {
+	        LancamentoVenda lancamentoVenda = repository.save(venda);
+	        return new LancamentoResponseDTO(lancamentoVenda);
+	    }
+	  
 
 }

@@ -1,6 +1,6 @@
 package br.com.serratec.entity;
 
-import org.springframework.beans.factory.annotation.Value;
+import java.util.List;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.DiscriminatorColumn;
@@ -62,10 +62,17 @@ public class Vendedor {
 		this.salario = salario;
 	}
 	
-	@OneToMany
+	@OneToMany(mappedBy = "vendedor")
 	@Schema(description = "Vendas")
-	private LancamentoVenda venda;
-	
-	
+	private List<LancamentoVenda> vendas;
 
+
+	public List<LancamentoVenda> getVendas() {
+		return vendas;
+	}
+	public void setVendas(List<LancamentoVenda> vendas) {
+		this.vendas = vendas;
+	}
+	
+	
 }
