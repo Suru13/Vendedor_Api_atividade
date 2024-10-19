@@ -77,5 +77,10 @@ public class LancamentoVenda {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
+
+	public LancamentoVenda() {
+		super();
+	}
+	
 	
 }
