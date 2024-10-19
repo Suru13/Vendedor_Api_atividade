@@ -2,6 +2,8 @@ package br.com.serratec.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -62,6 +64,7 @@ public class Vendedor {
 		this.salario = salario;
 	}
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "vendedor")
 	@Schema(description = "Vendas")
 	private List<LancamentoVenda> vendas;

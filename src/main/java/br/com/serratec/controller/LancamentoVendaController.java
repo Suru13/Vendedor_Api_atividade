@@ -44,7 +44,7 @@ public class LancamentoVendaController {
 	}
     
     @GetMapping("/paginacao")
-	public Page<LancamentoVenda> listarPorPagina(@PageableDefault() Pageable pageable) {
+	public Page<LancamentoVenda> listarPorPagina(@PageableDefault(page=0, size=10, sort = "valor", direction = Direction.DESC) Pageable pageable) {
 		return repository.findAll(pageable);
 	}
     

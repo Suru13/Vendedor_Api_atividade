@@ -2,6 +2,8 @@ package br.com.serratec.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +23,7 @@ public class LancamentoVenda {
 	@Schema(description = "Data da venda")
 	private LocalDate data;
 	
+	@JsonBackReference
 	@JoinColumn(name = "vendedor_id")
 	@ManyToOne
 	@Schema(description = "Vendedor da venda")
